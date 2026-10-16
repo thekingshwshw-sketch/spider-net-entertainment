@@ -1,1 +1,426 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d18">
+  <meta name="description" content="Spider Net Entertainment - مكتبتك الترفيهية المحلية">
+  <title>Spider Net | Entertainment</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080d18;
+      --panel: #111a2b;
+      --muted: #9aa9c0;
+      --text: #f4f7ff;
+      --accent: #26e6a0;
+      --blue: #36a5ff;
+      --border: rgba(255,255,255,.09);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 90% 0%, #123a42 0%, transparent 38%),
+        var(--bg);
+      color: var(--text);
+      font-family: Tahoma, Arial, sans-serif;
+      min-height: 100vh;
+    }
+
+    button, input { font: inherit; }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      border-radius: 14px;
+      color: #04140e;
+      background: linear-gradient(135deg, var(--accent), var(--blue));
+      font-size: 23px;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+
+    .status {
+      color: var(--accent);
+      font-size: 12px;
+      border: 1px solid #26e6a044;
+      border-radius: 30px;
+      padding: 8px 11px;
+    }
+
+    .hero {
+      padding: 52px 0 32px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      font-size: clamp(30px, 6vw, 54px);
+      line-height: 1.35;
+      margin: 15px 0;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 550px;
+      line-height: 1.9;
+      font-size: 14px;
+    }
+
+    .search {
+      display: flex;
+      gap: 10px;
+      max-width: 620px;
+      margin-top: 25px;
+    }
+
+    .search input {
+      flex: 1;
+      min-width: 0;
+      padding: 15px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #111a2b;
+      color: white;
+      outline: none;
+    }
+
+    .search input:focus {
+      border-color: var(--accent);
+    }
+
+    .search button {
+      border: 0;
+      border-radius: 12px;
+      padding: 0 20px;
+      color: #04140e;
+      background: var(--accent);
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 32px 0 17px;
+    }
+
+    h2 { font-size: 19px; margin: 0; }
+
+    .section-head span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .category {
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, #16243a, #101827);
+      padding: 18px 10px;
+      text-align: center;
+      border-radius: 15px;
+      color: white;
+      cursor: pointer;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .category:hover, .category.active {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .category strong {
+      display: block;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .category .symbol {
+      font-size: 25px;
+      color: var(--accent);
+    }
+
+    .library {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      padding-bottom: 35px;
+    }
+
+    .media-card {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--panel);
+    }
+
+    .poster {
+      min-height: 125px;
+      display: grid;
+      place-items: center;
+      padding: 15px;
+      text-align: center;
+      background: linear-gradient(145deg, #153e47, #182039 65%, #263354);
+    }
+
+    .poster b {
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .media-info { padding: 13px; }
+
+    .media-info h3 {
+      margin: 0 0 7px;
+      font-size: 14px;
+    }
+
+    .media-info p {
+      color: var(--muted);
+      font-size: 11px;
+      margin: 0;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 30px 10px;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 22px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.9;
+    }
+
+    @media (max-width: 520px) {
+      .categories { grid-template-columns: repeat(2, 1fr); }
+      .library { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero { padding-top: 35px; }
+      .status { font-size: 10px; }
+      .brand { font-size: 15px; }
+      .search button { padding: 0 13px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="container">
+    <div class="brand">
+      <div class="brand-mark">S</div>
+      <div>
+        SPIDER NET
+        <small>ENTERTAINMENT</small>
+      </div>
+    </div>
+    <div class="status">واجهة تجريبية</div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">YOUR LOCAL ENTERTAINMENT HUB</div>
+      <h1>عالمك الترفيهي،<br><span>في مكان واحد.</span></h1>
+      <p>
+        استكشف مكتبتك الترفيهية عبر شبكة Spider Net.
+        ابحث عن محتواك المفضل واستعد لتجربة مشاهدة منظمة وسهلة.
+      </p>
+
+      <form class="search" id="searchForm">
+        <input id="searchInput" type="search"
+          placeholder="ابحث عن عنوان أو تصنيف..."
+          aria-label="البحث في المكتبة">
+        <button type="submit">بحث</button>
+      </form>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>استكشف الأقسام</h2>
+        <span>اختر تصنيفًا</span>
+      </div>
+
+      <div class="categories" id="categories">
+        <button class="category active" data-category="all">
+          <span class="symbol">⌂</span>
+          <strong>الكل</strong>
+        </button>
+        <button class="category" data-category="movies">
+          <span class="symbol">▣</span>
+          <strong>الأفلام</strong>
+        </button>
+        <button class="category" data-category="series">
+          <span class="symbol">▤</span>
+          <strong>المسلسلات</strong>
+        </button>
+        <button class="category" data-category="anime">
+          <span class="symbol">◇</span>
+          <strong>الأنمي والكرتون</strong>
+        </button>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>مكتبة الوسائط</h2>
+        <span id="resultCount">3 عناصر تجريبية</span>
+      </div>
+
+      <div class="library" id="library">
+        <article class="media-card" data-category="movies">
+          <div class="poster"><b>اكتشف<br>عالم الأفلام</b></div>
+          <div class="media-info">
+            <h3>قسم الأفلام</h3>
+            <p>قسم تجريبي · بانتظار ربط المكتبة</p>
+          </div>
+        </article>
+
+        <article class="media-card" data-category="series">
+          <div class="poster"><b>حكايات<br>لا تنتهي</b></div>
+          <div class="media-info">
+            <h3>قسم المسلسلات</h3>
+            <p>قسم تجريبي · بانتظار ربط المكتبة</p>
+          </div>
+        </article>
+
+        <article class="media-card" data-category="anime">
+          <div class="poster"><b>عالم<br>الأنمي</b></div>
+          <div class="media-info">
+            <h3>قسم الأنمي والكرتون</h3>
+            <p>قسم تجريبي · بانتظار ربط المكتبة</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    SPIDER NET ENTERTAINMENT<br>
+    منصة محلية قيد التطوير · سيتم ربط المحتوى بخادم الوسائط لاحقًا
+  </footer>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const cards = [...document.querySelectorAll(".media-card")];
+    const categoryButtons = [
+      ...document.querySelectorAll(".category")
+    ];
+    const resultCount = document.getElementById("resultCount");
+
+    let activeCategory = "all";
+
+    function updateLibrary() {
+      const query = searchInput.value.trim().toLowerCase();
+      let visible = 0;
+
+      cards.forEach(card => {
+        const matchesCategory =
+          activeCategory === "all" ||
+          card.dataset.category === activeCategory;
+
+        const matchesText = card.textContent
+          .toLowerCase().includes(query);
+
+        const show = matchesCategory && matchesText;
+        card.hidden = !show;
+
+        if (show) visible++;
+      });
+
+      resultCount.textContent = visible + " عناصر";
+      let empty = document.getElementById("emptyMessage");
+
+      if (visible === 0 && !empty) {
+        empty = document.createElement("p");
+        empty.id = "emptyMessage";
+        empty.className = "empty";
+        empty.textContent = "لا توجد نتائج مطابقة.";
+        document.getElementById("library").appendChild(empty);
+      } else if (visible > 0 && empty) {
+        empty.remove();
+      }
+    }
+
+    categoryButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        activeCategory = button.dataset.category;
+
+        categoryButtons.forEach(item => {
+          item.classList.toggle("active", item === button);
+        });
+
+        updateLibrary();
+      });
+    });
+
+    document.getElementById("searchForm")
+      .addEventListener("submit", event => {
+        event.preventDefault();
+        updateLibrary();
+      });
+
+    searchInput.addEventListener("input", updateLibrary);
+  </script>
+</body>
+</html>
 
