@@ -1,43 +1,55 @@
 # SPIDER NET ENTERTAINMENT
 
-منصة الترفيه المحلية لشبكة Spider Net.
+A local entertainment platform for the Spider Net network.
 
-نبذة عن المشروع
+About the Project
 
-يهدف المشروع إلى إنشاء مكتبة وسائط محلية تتيح لمستخدمي شبكة Spider Net تصفح وتشغيل محتوى الفيديو المرخّص، بما في ذلك الأفلام والمسلسلات والأنمي والكرتون، عبر واجهة عربية سهلة الاستخدام.
+SPIDER NET ENTERTAINMENT aims to provide a modern, Arabic-friendly media library for browsing and streaming legally licensed movies, TV series, anime, and cartoons over the local network.
 
-الأهداف الرئيسية
+Core Features
 
-- واجهة عربية تدعم اتجاه الكتابة من اليمين إلى اليسار (RTL).
-- تصنيف المحتوى والبحث عنه.
-- عرض أغلفة الفيديو وتفاصيله.
-- تشغيل الفيديو عبر الشبكة المحلية.
-- لوحة إدارة لتنظيم مكتبة الوسائط.
-- تصميم متجاوب مع الهواتف وأجهزة الكمبيوتر.
-- تحسين الأداء للأجهزة محدودة الموارد.
-- إمكانية التطوير مستقبلًا للتكامل مع شبكة MikroTik.
+- Arabic interface with right-to-left (RTL) support.
+- Search and content categories.
+- Media posters and detailed information pages.
+- Video playback over the local network.
+- Media library administration.
+- Responsive design for mobile devices and computers.
+- Performance optimization for resource-limited hardware.
+- Potential future integration with MikroTik RouterOS 7.
 
-البنية التقنية المبدئية
+Initial Technology Stack
 
-- Media Server: Jellyfin.
-- Frontend: واجهة ويب مخصصة.
-- Version Control: Git وGitHub.
-- Network: شبكة Spider Net المحلية.
+- Media Server: Jellyfin
+- Frontend: Custom web interface
+- Version Control: Git and GitHub
+- Network: Spider Net local network
 
-مبادئ التطوير
+Development Principles
 
-1. الحفاظ على استقرار الشبكة الحالية.
-2. اختبار التغييرات قبل تطبيقها.
-3. عدم تضمين كلمات المرور أو مفاتيح الوصول في المستودع.
-4. استخدام محتوى مرخّص أو مصرح بتوزيعه.
-5. توثيق التغييرات والإصدارات.
+1. Protect the stability of the existing network.
+2. Test changes before deployment.
+3. Never commit passwords, API keys, or private credentials.
+4. Use legally licensed or authorized media only.
+5. Document changes and releases.
+6. Keep the initial implementation lightweight and easy to maintain.
 
-حالة المشروع
+Development Roadmap
 
-المرحلة الحالية: التأسيس والتخطيط.
+- [ ] Set up the project repository.
+- [ ] Install and configure Jellyfin on the local server.
+- [ ] Test video playback on the server.
+- [ ] Test access from a mobile device on the local network.
+- [ ] Design the custom Arabic user interface.
+- [ ] Add search, categories, and media details.
+- [ ] Develop administration features.
+- [ ] Evaluate future MikroTik integration without disrupting the existing network.
 
-سيتم تنفيذ المشروع تدريجيًا، بدءًا من تشغيل خادم الوسائط محليًا، ثم اختبار الوصول من الهاتف، ثم تطوير الواجهة المخصصة.
+Current Status
 
-الترخيص
+Phase: Initial setup and planning.
 
-سيُحدد الترخيص المناسب عند اختيار بنية المشروع النهائية.
+The project will be developed incrementally, beginning with a working local media server before adding the custom interface and advanced features.
+
+License
+
+The project license will be selected when the distribution and licensing requirements are finalized.
