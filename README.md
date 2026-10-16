@@ -1,4 +1,4 @@
-# SPIDER NET ENTERTAINMENT
+ SPIDER NET ENTERTAINMENT
 
 A local entertainment platform for the Spider Net network.
 
