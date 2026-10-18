@@ -30,7 +30,7 @@ jobs:
                   "HTML document": "<!doctype html>" in text.lower(),
                   "Arabic RTL": 'dir="rtl"' in text,
                   "viewport": 'name="viewport"' in text,
-                  "no javascript: URL literal": not re.search(r'href\\s*=\\s*["\\']\\s*javascript:', text, re.I),
+                  "no javascript: URL literal": not re.search(r"""href\s*=\s*["']\s*javascript:""", text, re.I),
               }
               for name, ok in checks.items():
                   print(f"{path}: {name}: {'PASS' if ok else 'FAIL'}")
