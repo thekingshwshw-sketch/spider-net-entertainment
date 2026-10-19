@@ -1,55 +1,34 @@
- SPIDER NET ENTERTAINMENT
+# SPIDER NET ENTERTAINMENT
 
-A local entertainment platform for the Spider Net network.
+واجهة عربية لمشروع مكتبة ترفيهية محلية لشبكة Spider Net، مع فصل واضح بين واجهة التصميم وخادم الوسائط الفعلي.
 
-About the Project
+## الحالة الحالية
+- `index.html`: واجهة تصميم عربية RTL متجاوبة مع عناصر توضيحية. العناصر الظاهرة ليست ملفات وسائط مثبتة على الخادم.
+- `connect.html`: بوابة تفتح واجهة خادم Jellyfin داخل الشبكة المحلية، ولا تطلب أو تخزن كلمات مرور.
+- `admin.html`: نموذج إدارة أولي يستخدم `localStorage` داخل متصفح واحد. ليس نظام صلاحيات أو تخزينًا مشتركًا.
+- Jellyfin **لم يُثبت أو يُختبر على اللابتوب من خلال هذا المستودع**. لا تفترض أن البث المحلي أو تعدد المشاهدين يعمل قبل اختباره.
 
-SPIDER NET ENTERTAINMENT aims to provide a modern, Arabic-friendly media library for browsing and streaming legally licensed movies, TV series, anime, and cartoons over the local network.
+## البداية الموصى بها
+1. اقرأ [دليل الإعداد المحلي بالعربية](LAN_DEPLOYMENT_AR.md).
+2. ثبّت Jellyfin على جهاز الخادم من [المصدر الرسمي](https://jellyfin.org/docs/general/installation/windows/).
+3. أكمل الإعداد من `http://localhost:8096` على جهاز الخادم، وأضف عينة محتوى تملك حق عرضه.
+4. افتح `connect.html` من جهاز متصل بالشبكة نفسها وأدخل عنوان IPv4 المحلي للخادم.
+5. بعد نجاح اختبار التشغيل من الهاتف، اختبر الأداء تدريجيًا قبل إتاحة الخدمة على نطاق واسع.
 
-Core Features
+## الأمان
+- لا تخزن كلمات مرور أو رموز API أو مفاتيح وصول داخل HTML أو مستودع GitHub.
+- لا تفتح منفذ Jellyfin للإنترنت العام ولا تضف Port Forwarding في MikroTik/Starlink لهذا المشروع.
+- وصول LAN قد يتطلب قاعدة Windows Firewall مقيدة بالشبكة المحلية. اقرأ نطاق الشبكة الفعلي أولًا، خصوصًا عند وجود VLANs أو عزل بين المشتركين.
+- استخدم فقط محتوى تملك حق استضافته وتوزيعه.
+- `scripts/Check-SpiderNetLAN.ps1` سكربت تشخيص قراءة فقط؛ لا يعدل إعدادات Windows أو الراوتر.
+- `tools/validate_site.py` يفحص بنية الصفحات والمسارات وحجم HTML وصياغة JavaScript باستخدام Node.js. فحوصات الكود لا تغني عن اختبار الخادم والشبكة الفعلية.
 
-- Arabic interface with right-to-left (RTL) support.
-- Search and content categories.
-- Media posters and detailed information pages.
-- Video playback over the local network.
-- Media library administration.
-- Responsive design for mobile devices and computers.
-- Performance optimization for resource-limited hardware.
-- Potential future integration with MikroTik RouterOS 7.
+## GitHub Pages
+GitHub Pages يستضيف الملفات الثابتة فقط؛ لا يشغل Jellyfin أو قاعدة بيانات مشتركة. الموقع العام هو معاينة للتصميم ومدخل للاتصال بخادم داخل الشبكة، بينما تبقى إدارة الوسائط الفعلية داخل Jellyfin.
 
-Initial Technology Stack
+## الاختبارات
+ملف GitHub Actions `.github/workflows/quality.yml` يشغّل فحوصات ساكنة عند الدفع إلى الفروع أو فتح طلب دمج. نجاحها يعني أن فحوصات الكود المحددة اجتازت الاختبار، لا أن اللابتوب قادر على خدمة 20 مشاهدة متزامنة.
 
-- Media Server: Jellyfin
-- Frontend: Custom web interface
-- Version Control: Git and GitHub
-- Network: Spider Net local network
-
-Development Principles
-
-1. Protect the stability of the existing network.
-2. Test changes before deployment.
-3. Never commit passwords, API keys, or private credentials.
-4. Use legally licensed or authorized media only.
-5. Document changes and releases.
-6. Keep the initial implementation lightweight and easy to maintain.
-
-Development Roadmap
-
-- [ ] Set up the project repository.
-- [ ] Install and configure Jellyfin on the local server.
-- [ ] Test video playback on the server.
-- [ ] Test access from a mobile device on the local network.
-- [ ] Design the custom Arabic user interface.
-- [ ] Add search, categories, and media details.
-- [ ] Develop administration features.
-- [ ] Evaluate future MikroTik integration without disrupting the existing network.
-
-Current Status
-
-Phase: Initial setup and planning.
-
-The project will be developed incrementally, beginning with a working local media server before adding the custom interface and advanced features.
-
-License
-
-The project license will be selected when the distribution and licensing requirements are finalized.
+## وثائق رسمية
+- [تثبيت Jellyfin على Windows](https://jellyfin.org/docs/general/installation/windows/)
+- [الشبكات والمنافذ في Jellyfin](https://jellyfin.org/docs/general/post-install/networking/)
