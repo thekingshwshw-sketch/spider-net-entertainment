@@ -12,29 +12,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Check required files
-        run: |
-          test -s index.html
-          test -s admin.html
-          test -s README.md
-      - name: Validate HTML and unsafe URL patterns
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import re, sys
-          files = [Path("index.html"), Path("admin.html")]
-          failed = False
-          for path in files:
-              text = path.read_text(encoding="utf-8")
-              checks = {
-                  "HTML document": "<!doctype html>" in text.lower(),
-                  "Arabic RTL": 'dir="rtl"' in text,
-                  "viewport": 'name="viewport"' in text,
-                  "no javascript: URL literal": not re.search(r"""href\s*=\s*["']\s*javascript:""", text, re.I),
-              }
-              for name, ok in checks.items():
-                  print(f"{path}: {name}: {'PASS' if ok else 'FAIL'}")
-                  failed |= not ok
-          if failed:
-              sys.exit(1)
-          PY
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Verify Node.js
+        run: node --version
+      - name: Validate pages, local paths, payload, and JavaScript syntax
+        run: python tools/validate_site.py
