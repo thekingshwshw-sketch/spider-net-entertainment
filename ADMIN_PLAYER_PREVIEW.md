@@ -1,20 +1,25 @@
 # Spider Net Admin & Player — Preview
 
-This change adds an independent Arabic RTL admin prototype at `/admin.html` without replacing the existing homepage.
+## Purpose
+`admin.html` is an early catalog-editing prototype and a direct-video playback test page. It is separate from the main design at `index.html`.
 
 ## Included
-- Add, edit, delete, filter, and search catalog entries.
-- Safe URL allowlist limited to HTTP/HTTPS for poster and direct-video URLs.
-- HTML video player with native controls and mobile `playsinline`.
-- JSON export/import for a local catalog backup.
-- GitHub Actions checks for required files and basic HTML safety invariants.
+- Add, edit, delete, search, and filter catalog entries.
+- Restrict poster/video links to HTTP or HTTPS.
+- Native HTML5 video player with mobile `playsinline`.
+- Import/export JSON for a local backup.
+- Link to `connect.html` to open the real Jellyfin web interface hosted on the LAN.
 
-## Important limitations
-- This is a browser-local prototype using `localStorage`; it is not authentication and does not sync between visitors or devices.
-- Do not enter passwords, API keys, or private credentials.
-- A shared admin system needs a trusted backend/authentication and storage, or integration with a media server such as Jellyfin.
-- Video playback depends on a directly accessible, browser-compatible media URL and appropriate server CORS/range support.
-- Only add media you are authorized to host and stream.
+## Limitations — important
+- Data is saved in this browser's `localStorage`; it is not shared with other devices or visitors.
+- There is no login, authorization system, shared database, or integration with the Jellyfin API in this prototype.
+- Do not enter passwords, API keys, or credentials in this page.
+- Direct video URLs only work when the URL is reachable and the server supports browser playback and range requests.
+- Only store or stream content you are authorized to host and distribute.
 
-## Preview
-After the branch is merged and GitHub Pages finishes publishing, open `/admin.html` on the published site. The current homepage is not modified by this branch.
+## Preview paths
+- Main design: `/spider-net-entertainment/`
+- Local-server entry page: `/spider-net-entertainment/connect.html`
+- Local admin prototype: `/spider-net-entertainment/admin.html`
+
+GitHub Pages serves static files; it does not run Jellyfin or a shared backend. Follow `LAN_DEPLOYMENT_AR.md` for server setup.
